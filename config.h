@@ -13,7 +13,7 @@
 
 /* --overwrite option */
 /* by Satoru Takabayashi <ccsatoru@vega.aichi-u.ac.jp> */
-#define OVERWRITE
+#undef OVERWRITE
 
 /* --cap-input, --url-input option */
 #define INPUT_OPTION

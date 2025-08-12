@@ -1,6 +1,7 @@
-CC = cc
-CFLAGS = -g -O2 -Wall -pedantic
+CC = m68k-xelf-gcc
+CFLAGS = -O2 -Wall -pedantic
 # CFLAGS = -O3
+LDFLAGS = -ldos -liocs -lx68k
 SHAR = shar 
 # SHAR = shar -T
 PERL = perl
@@ -9,12 +10,14 @@ VERSION = 2.1.5
 MKDIR = mkdir
 prefix = /usr/local
 PYTHON2 = python
-PYTHON3 = python
+PYTHON3 = python3
+
+NKFEXE = nkf.x
 
 .PHONY: clean install test tar shar
 
-nkf : nkf.o utf8tbl.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o nkf nkf.o utf8tbl.o
+$(NKFEXE) : nkf.o utf8tbl.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NKFEXE) nkf.o utf8tbl.o
 
 nkf.o : nkf.c nkf.h utf8tbl.h config.h
 	$(CC) $(CFLAGS) -c nkf.c
@@ -26,7 +29,7 @@ clean:
 	-$(RM) nkf.o nkf nkf.exe nkf.in nkf.out nkf-$(VERSION) *~ *.bad utf8tbl.o
 	cd NKF.mod; if [ -f Makefile ]; then make clean; fi
 
-test:	nkf
+test:	$(NKFEXE)
 	$(PERL) test.pl
 
 perl:
