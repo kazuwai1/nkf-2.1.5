@@ -1,2 +1,3 @@
-osdnにあったnkf-2.1.5を自分用にgithubにUPLOADしました。
-Makefileを見てもらえばわかりますが、elf2x68kでビルドするための記述に変更ずみです。
+osdnにあったnkf-2.1.5を自分用にgithubにUPLOADしました。  
+Makefileを見てもらえばわかりますが、elf2x68kでビルドするための記述に変更ずみです。  
+あとはシンボルOVERWRITEをundefしてビルドした記憶があります。  
